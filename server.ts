@@ -323,21 +323,21 @@ Keep tone encouraging, crisp, without corporate jargon or robotic boilerplate. R
       }
     }
 
-    // High quality contextual fallback reply
-    const fallbackReply = `
-### 🌿 Great question! Here is your personalized action plan:
+    // Dynamic fallback that actually addresses the user's specific question
+const fallbackReply = `
+### 🌿 Regarding your question: "${userMessage || 'Sustainable living'}"
 
-Looking at your current **${sustainabilityScore}/100 Sustainability Score** and **${streakDays}-day streak**, your energy tracking is solid, but **phantom/standby electrical load** and **packaging waste** are two quick areas where you can unlock immediate wins!
+While our live AI connection is temporarily taking a breather, here is your tailored action plan based on your **${sustainabilityScore}/100 Sustainability Score** and **${streakDays}-day streak**:
 
-#### 💡 3 High-Impact Steps You Can Take:
-1. **Target Vampire Power Draw**: Your entertainment center and PC setup likely consume 15–30W even when turned off. Plugging them into a smart power strip will cut ~20 kWh and save roughly **$3.20 & 7.7 kg CO2e every month**.
-2. **Double-Check Food Contamination**: You've diverted **${diversionRate}%** of your waste so far! Remember that paper and cardboard must be free of grease; compost soiled napkins instead of sending them to standard recycling.
-3. **Optimize Refrigerator Temperatures**: Set your fridge to 37°F (3°C) and freezer to 0°F (-18°C). Every degree cooler than that wastes 5% more energy.
+#### 💡 High-Impact Steps You Can Take Today:
+1. **Target Vampire Power Draw**: Unplug entertainment centers and PCs when idle to save ~20 kWh monthly.
+2. **Optimize Refrigerator Settings**: Set your fridge to 37°F (3°C) to prevent compressor overworking.
+3. **Waste & Recycling Check**: Ensure paper/cardboard items are free of grease before recycling.
 
 ---
-🎯 **Your Personalized GreenPulse Mission:**
+🎯 **Your GreenPulse Mission:**
 **"The 24-Hour Phantom Power Audit"** (+40 XP)
-*Walk around your home tonight and switch off 4 standby appliances before bed.*
+*Switch off 4 standby appliances before bed tonight.*
 `;
 
     return res.json({
