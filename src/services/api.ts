@@ -12,14 +12,29 @@ export interface WasteScanResult {
   funEcoFact: string;
 }
 
+const SUPABASE_URL = import.meta.env.VITE_SUPABASE_URL;
+const SUPABASE_ANON_KEY = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+function edgeFunctionUrl(slug: string): string {
+  return `${SUPABASE_URL}/functions/v1/${slug}`;
+}
+
+function edgeHeaders(): Record<string, string> {
+  return {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${SUPABASE_ANON_KEY}`,
+    apikey: SUPABASE_ANON_KEY,
+  };
+}
+
 export async function scanWasteItem(params: {
   itemName?: string;
   imageBase64?: string;
   mimeType?: string;
 }): Promise<{ source: string; data: WasteScanResult }> {
-  const res = await fetch('/api/waste/scan', {
+  const res = await fetch(edgeFunctionUrl('waste-scan'), {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: edgeHeaders(),
     body: JSON.stringify(params),
   });
 
@@ -48,9 +63,9 @@ export async function chatWithCoach(params: {
     recentItems: string[];
   };
 }): Promise<{ source: string; reply: string }> {
-  const res = await fetch('/api/coach/chat', {
+  const res = await fetch(edgeFunctionUrl('coach-chat'), {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: edgeHeaders(),
     body: JSON.stringify(params),
   });
 
@@ -70,9 +85,9 @@ export async function auditEnergyAppliance(params: {
   tariff: number;
   gridFactor: number;
 }) {
-  const res = await fetch('/api/energy/audit', {
+  const res = await fetch(edgeFunctionUrl('energy-audit'), {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: edgeHeaders(),
     body: JSON.stringify(params),
   });
 
@@ -103,9 +118,9 @@ export async function simulateAiForecast(params: {
   tariff?: number;
   gridFactor?: number;
 }): Promise<{ source: string; data: AiForecastResult }> {
-  const res = await fetch('/api/ai/forecast', {
+  const res = await fetch(edgeFunctionUrl('ai-forecast'), {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: edgeHeaders(),
     body: JSON.stringify(params),
   });
   if (!res.ok) throw new Error('Forecast calculation unavailable');
@@ -119,9 +134,9 @@ export async function generateAiLetter(params: {
   lastAction: string;
   avoidedCo2e: number;
 }): Promise<{ source: string; letter: string }> {
-  const res = await fetch('/api/ai/letter', {
+  const res = await fetch(edgeFunctionUrl('ai-letter'), {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: edgeHeaders(),
     body: JSON.stringify(params),
   });
   if (!res.ok) throw new Error('Letter generator unavailable');
@@ -148,9 +163,9 @@ export async function generateAi7DayPlan(params: {
   goal: string;
   householdSize?: number;
 }): Promise<{ source: string; data: Ai7DayPlanResult }> {
-  const res = await fetch('/api/ai/diagnose', {
+  const res = await fetch(edgeFunctionUrl('ai-diagnose'), {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: edgeHeaders(),
     body: JSON.stringify(params),
   });
   if (!res.ok) throw new Error('Plan generator unavailable');
@@ -177,13 +192,12 @@ export async function runAiCalculatorAudit(params: {
   formData: any;
   currentTonnes: number;
 }): Promise<{ source: string; data: AiCalculatorAuditResult }> {
-  const res = await fetch('/api/ai/calculator/audit', {
+  const res = await fetch(edgeFunctionUrl('ai-calculator-audit'), {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: edgeHeaders(),
     body: JSON.stringify(params),
   });
   if (!res.ok) throw new Error('Calculator audit unavailable');
   const json = await res.json();
   return { source: json.source, data: json.data };
 }
-

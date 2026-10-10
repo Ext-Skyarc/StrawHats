@@ -1,0 +1,20 @@
+[functions.waste-scan]
+verify_jwt = false
+
+[functions.coach-chat]
+verify_jwt = false
+
+[functions.energy-audit]
+verify_jwt = false
+
+[functions.ai-forecast]
+verify_jwt = false
+
+[functions.ai-letter]
+verify_jwt = false
+
+[functions.ai-diagnose]
+verify_jwt = false
+
+[functions.ai-calculator-audit]
+verify_jwt = false
