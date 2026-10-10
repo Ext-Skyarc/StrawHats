@@ -1,36 +1,24 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>EcoQuest | Made by Straw Hats</title><link rel="stylesheet" href="style.css"></head><body>
-<header class="topbar">
-<a class="brand" href="index.html"><span class="brand-mark">🌍</span><span><strong>Eco<span>Quest</span></strong><small>SMALL ACTIONS. GREENER TOMORROWS.</small></span></a>
-<nav><a class="nav-link active" href="index.html">Home</a><a class="nav-link " href="report.html">Report Waste</a><a class="nav-link " href="community.html">Community</a><a class="nav-link " href="leaderboard.html">Leaderboard</a></nav>
-<a class="profile-pill" href="report.html"><span class="avatar">🌱</span><span id="navGreeting">Hello, Explorer!</span></a>
-</header>
-<main>
-<section class="hero"><div class="hero-copy"><div class="eyebrow"><span class="pulse-dot"></span> YOUR PLANET. YOUR QUEST.</div><h1>Make your corner<br>of Earth <span>greener.</span></h1><p class="hero-text">Spot waste. Snap it. Report it. Every small action grows into a cleaner, brighter tomorrow.</p><div class="actions"><a class="btn btn-primary" href="report.html">Start your quest ↗</a><a class="btn btn-ghost" href="community.html">Explore community</a></div><div class="hero-proof"><span>🌿 🌎 🌱</span><span><b id="homeReports">0</b> reports made by you</span></div><p class="muted" style="margin-top:22px">Made with purpose by <b style="color:var(--green)">Straw Hats</b></p></div>
-<div class="hero-art"><div class="sun-glow"></div><div class="orbit"></div><div class="orbit two"></div><div class="mascot"><div class="hat"><span></span></div><div class="earth-face"><div class="land land-a"></div><div class="land land-b"></div><div class="eye eye-a"></div><div class="eye eye-b"></div><div class="cheek cheek-a"></div><div class="cheek cheek-b"></div><div class="smile"></div></div></div><div class="art-tag tag-left"><span>♻</span><div><b>Waste less</b><small>Love more</small></div></div><div class="art-tag tag-right"><span>⚡</span><div><b>Clean energy</b><small>Bright future</small></div></div><div class="made-by">MADE BY <b>STRAW HATS</b></div></div></section>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EcoQuest | Made by Straw Hats</title>
+    <meta name="description" content="EcoQuest - Small actions. Greener tomorrows. Spot waste, calculate carbon footprint, track appliance energy, and unlock green habits. Made by Straw Hats." />
+    <meta property="og:title" content="EcoQuest | Made by Straw Hats" />
+    <meta property="og:description" content="EcoQuest - Small actions. Greener tomorrows. Spot waste, calculate carbon footprint, track appliance energy, and unlock green habits. Made by Straw Hats." />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Nunito:wght@600;700;800;900&display=swap" rel="stylesheet" />
+    <meta property="og:image" content="https://bolt.new/static/og_default.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:image" content="https://bolt.new/static/og_default.png">
+</head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
 
-<section class="panel welcome-panel" id="welcome">
-  <div class="welcome-copy">
-    <span class="section-kicker">YOUR PERSONAL GREEN SPACE</span>
-    <h2 id="welcomeTitle">Hello, Green Explorer! <span>🌱</span></h2>
-    <p class="muted">Make EcoQuest yours. Enter your name and we'll welcome you every time you visit.</p>
-  </div>
-  <form id="nameForm" class="name-form">
-    <label class="field-label" for="visitorName">What should we call you?</label>
-    <div class="name-form-row">
-      <input class="field" id="visitorName" maxlength="32" autocomplete="given-name" placeholder="Enter your name" required>
-      <button class="btn btn-primary" type="submit">Save name ↗</button>
-    </div>
-  </form>
-</section>
-
-<section class="quote-panel panel"><span class="section-kicker">✦ A LITTLE DAILY SPARK</span><blockquote id="dailyQuote">“Small green habits grow into a big beautiful future.”</blockquote><div class="quote-author">— Your planet, probably 🌍</div></section>
-<section class="quick-links">
-<a class="quick-link" href="report.html"><span class="emoji">📸</span><h3>Report waste</h3><p>Upload a photo of litter around you and earn a virtual flower.</p><span>Make a report ↗</span></a>
-<a class="quick-link" href="community.html"><span class="emoji">💬</span><h3>Join the community</h3><p>See local action, share progress, and cheer other green heroes.</p><span>Meet the community ↗</span></a>
-<a class="quick-link" href="leaderboard.html"><span class="emoji">🏆</span><h3>Green champions</h3><p>Track your points and discover the people leading the quest.</p><span>View leaderboard ↗</span></a>
-</section>
-<section class="energy-banner"><div class="energy-orb">⚡</div><div><span class="section-kicker">WASTE LESS. POWER WISELY.</span><h2>A greener planet runs on <span>better choices.</span></h2><p id="energyTip">Switch off lights when you leave a room, and unplug chargers when not in use.</p></div><button class="btn btn-ghost" id="nextTip">Another tip ↻</button></section>
-</main><footer><a class="footer-brand" href="index.html">🌎 EcoQuest</a><span>Small actions. Greener tomorrows.</span><span>Made by <b>Straw Hats</b> ☠️</span></footer>
-<div class="toast" id="toast" role="status" aria-live="polite"></div>
-<div class="modal" id="rewardModal" hidden><section class="modal-box"><button class="modal-close" id="closeModal">×</button><div class="modal-icon">🌎 🎉 🌸</div><h2>You're a Green Hero!</h2><p>Congratulations on completing seven consecutive days of action for a cleaner planet.</p><div class="certificate"><div>🌿 🌸 🌿</div><h3>Letter of Appreciation</h3><p>This recognises your commitment to a greener tomorrow.</p><b>Presented by Straw Hats · EcoQuest</b></div><button class="btn btn-primary" id="claimReward">Celebrate & continue 🌱</button></section></div>
-<script src="script.js"></script></body></html>
